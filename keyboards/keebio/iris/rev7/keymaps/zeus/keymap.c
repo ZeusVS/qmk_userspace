@@ -29,6 +29,19 @@ enum custom_keycodes {
 #define GUI_SCLN MT(MOD_RGUI,KC_SCLN)
 #define L2_SPC LT(2,KC_SPC)
 
+// SYM layer homerow mods
+// Left-hand home row mods
+#define GUI_EXLM MT(MOD_LGUI,KC_F24)
+#define ALT_AT MT(MOD_LALT,KC_F24)
+#define CTL_HASH MT(MOD_LCTL,KC_F24)
+#define SFT_DLR MT(MOD_LSFT,KC_F24)
+
+// Right-hand home row mods
+#define SFT_AMPR MT(MOD_RSFT,KC_F24)
+#define CTL_ASTR MT(MOD_RCTL,KC_F24)
+#define ALT_LPRN MT(MOD_RALT,KC_F24)
+#define GUI_UNDS MT(MOD_RGUI,KC_F24)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT(
@@ -127,6 +140,56 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_ADJUST);
       }
       return false;
+      break;
+
+      // Logic to allow mod-tap on symbols
+      case GUI_EXLM:
+      if (record->event.pressed && record->tap.count > 0) {
+          tap_code16(KC_EXLM);
+          return false;
+      }
+      break;
+      case ALT_AT:
+      if (record->event.pressed && record->tap.count > 0) {
+          tap_code16(KC_AT);
+          return false;
+      }
+      break;
+      case CTL_HASH:
+      if (record->event.pressed && record->tap.count > 0) {
+          tap_code16(KC_HASH);
+          return false;
+      }
+      break;
+      case SFT_DLR:
+      if (record->event.pressed && record->tap.count > 0) {
+          tap_code16(KC_DLR);
+          return false;
+      }
+      break;
+      case SFT_AMPR:
+      if (record->event.pressed && record->tap.count > 0) {
+          tap_code16(KC_ASTR);
+          return false;
+      }
+      break;
+      case CTL_ASTR:
+      if (record->event.pressed && record->tap.count > 0) {
+          tap_code16(KC_ASTR);
+          return false;
+      }
+      break;
+      case ALT_LPRN:
+      if (record->event.pressed && record->tap.count > 0) {
+          tap_code16(KC_LPRN);
+          return false;
+      }
+      break;
+      case GUI_UNDS:
+      if (record->event.pressed && record->tap.count > 0) {
+          tap_code16(KC_UNDS);
+          return false;
+      }
       break;
   }
   return true;
