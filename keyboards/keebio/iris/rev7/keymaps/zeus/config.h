@@ -73,6 +73,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Beginning of customization
 // This disables tapping function repeating when holding after tapping
 #define QUICK_TAP_TERM 0
-
-#define BOOTMAGIC_LITE_ROW 0
-#define BOOTMAGIC_LITE_COLUMN 0

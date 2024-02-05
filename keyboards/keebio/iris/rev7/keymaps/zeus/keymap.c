@@ -40,7 +40,7 @@ enum custom_keycodes {
 #define SFT_AMPR MT(MOD_RSFT,KC_F24)
 #define CTL_ASTR MT(MOD_RCTL,KC_F24)
 #define ALT_LPRN MT(MOD_RALT,KC_F24)
-#define GUI_UNDS MT(MOD_RGUI,KC_F24)
+#define GUI_RPRN MT(MOD_RGUI,KC_F24)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_GRV,  KC_1,     KC_2,   KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                            KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS,
+     KC_TILD, GUI_EXLM,ALT_AT,  CTL_HASH,SFT_DLR, KC_PERC,                            KC_CIRC, SFT_AMPR,CTL_ASTR,ALT_LPRN,GUI_RPRN, KC_UNDS,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______, _______, _______, KC_PPLS, KC_LCBR, KC_LBRC, _______,          _______, KC_RBRC, KC_RCBR, KC_EQL,  _______, _______, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -143,51 +143,51 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
 
       // Logic to allow mod-tap on symbols
-      case GUI_EXLM:
-      if (record->event.pressed && record->tap.count > 0) {
+    case GUI_EXLM:
+      if (record->event.pressed && record->tap.count) {
           tap_code16(KC_EXLM);
           return false;
       }
       break;
-      case ALT_AT:
-      if (record->event.pressed && record->tap.count > 0) {
+    case ALT_AT:
+      if (record->event.pressed && record->tap.count) {
           tap_code16(KC_AT);
           return false;
       }
       break;
-      case CTL_HASH:
-      if (record->event.pressed && record->tap.count > 0) {
+    case CTL_HASH:
+      if (record->event.pressed && record->tap.count) {
           tap_code16(KC_HASH);
           return false;
       }
       break;
-      case SFT_DLR:
-      if (record->event.pressed && record->tap.count > 0) {
+    case SFT_DLR:
+      if (record->event.pressed && record->tap.count) {
           tap_code16(KC_DLR);
           return false;
       }
       break;
-      case SFT_AMPR:
-      if (record->event.pressed && record->tap.count > 0) {
+    case SFT_AMPR:
+      if (record->event.pressed && record->tap.count) {
           tap_code16(KC_ASTR);
           return false;
       }
       break;
-      case CTL_ASTR:
-      if (record->event.pressed && record->tap.count > 0) {
+    case CTL_ASTR:
+      if (record->event.pressed && record->tap.count) {
           tap_code16(KC_ASTR);
           return false;
       }
       break;
       case ALT_LPRN:
-      if (record->event.pressed && record->tap.count > 0) {
+      if (record->event.pressed && record->tap.count) {
           tap_code16(KC_LPRN);
           return false;
       }
       break;
-      case GUI_UNDS:
-      if (record->event.pressed && record->tap.count > 0) {
-          tap_code16(KC_UNDS);
+      case GUI_RPRN:
+      if (record->event.pressed && record->tap.count) {
+          tap_code16(KC_RPRN);
           return false;
       }
       break;
